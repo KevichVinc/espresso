@@ -1,23 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import { Route } from 'react-router-dom';
+import React, { useState } from 'react';
+import PageOne from './components/PageOne';
+import PageTwo from './components/PageTwo';
 
 function App() {
+  const [data, setData] = useState([]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <Route
+        exact
+        path='/'
+        render={() => <PageOne setData={setData} />}
+      ></Route>
+      <Route exact path='/page2' render={() => <PageTwo data={data} />}></Route>
     </div>
   );
 }
